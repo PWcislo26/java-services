@@ -9,7 +9,9 @@ import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.*;
 
 import java.util.List;
+import java.util.Objects;
 import java.util.Optional;
+import java.util.stream.Collectors;
 
 @RestController("/")
 public class StudentResource {
@@ -71,6 +73,18 @@ public class StudentResource {
             return new ResponseEntity<>(studentById.get().getApplications(), HttpStatus.OK);
         }
         else {
+            return new ResponseEntity<>(HttpStatus.NOT_FOUND);
+        }
+    }
+
+    @GetMapping("/students/{id}/applications/{applicationId}")
+    public ResponseEntity<List> getStudentApplication(@PathVariable Long id, @PathVariable Long applicationId){
+        Optional<Student> studentById = studentRepo.findById(id);
+        if(studentById.isPresent()){
+            return new ResponseEntity<List>(studentById.get().getApplications().stream().filter(application ->
+                    Objects.equals(application.getId(), applicationId)).collect(Collectors.toList()), HttpStatus.OK);
+        }
+        else{
             return new ResponseEntity<>(HttpStatus.NOT_FOUND);
         }
     }

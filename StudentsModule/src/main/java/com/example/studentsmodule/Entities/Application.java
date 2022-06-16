@@ -21,4 +21,11 @@ public class Application {
     String type;
     String description;
     String status;
+
+    public Application(Long studentId, String type, String description){
+        this.studentId = studentId;
+        this.type = type;
+        this.description = description;
+        this.status = "Sent";
+    }
 }
