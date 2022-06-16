@@ -27,15 +27,15 @@ public class StudentService {
 
     public List<Student> getAllStudents(){return studentRepo.findAll();}
 
-    @PostConstruct
-    private void postConstruct(){
-        Student student = new Student("Piotr", "Wcislo", "98030602530");
-        Student student1 = new Student("Anna", "Gorska", "99050503210");
-        Student student2 =  new Student("Piotr", "Nowak", "98");
-        studentRepo.save(student);
-        Application application = new Application(1L, "Scholarship", "XYZ");
-        applicationRepo.save(application);
-        studentRepo.save(student1);
-        studentRepo.save(student2);
-    }
+//    @PostConstruct
+//    private void postConstruct(){
+//        Student student = new Student("Piotr", "Wcislo", "98030602530");
+//        Student student1 = new Student("Izabela", "Kowalska", "99050503210");
+//        Student student2 =  new Student("Piotr", "Nowak", "98");
+//        studentRepo.save(student);
+//        Application application = new Application(1L, "Scholarship", "XYZ");
+//        applicationRepo.save(application);
+//        studentRepo.save(student1);
+//        studentRepo.save(student2);
+//    }
 }
