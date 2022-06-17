@@ -24,4 +24,10 @@ public class Application {
         this.status = "Sent";
         this.date = LocalDate.now();
     }
+
+    public Application(Long id, Long studentId, String status){
+        this.id = id;
+        this.studentId = studentId;
+        this.status = status;
+    }
 }

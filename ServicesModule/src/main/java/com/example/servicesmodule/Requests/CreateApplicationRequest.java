@@ -1,10 +1,10 @@
 package com.example.servicesmodule.Requests;
 
+import lombok.AllArgsConstructor;
 import lombok.Getter;
-import lombok.NoArgsConstructor;
 
 @Getter
-@NoArgsConstructor
+@AllArgsConstructor
 public class CreateApplicationRequest {
     private Long studentId;
     private String type;

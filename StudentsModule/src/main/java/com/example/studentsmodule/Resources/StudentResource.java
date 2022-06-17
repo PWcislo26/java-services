@@ -5,7 +5,6 @@ import com.example.studentsmodule.Entities.Student;
 import com.example.studentsmodule.Repository.ApplicationRepo;
 import com.example.studentsmodule.Repository.StudentRepo;
 import com.example.studentsmodule.Services.StudentService;
-import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.*;
@@ -99,5 +98,22 @@ public class StudentResource {
         else{
             return new ResponseEntity<>(HttpStatus.NOT_FOUND);
         }
+    }
+
+    @PutMapping("/students/{id}/applications/{applicationId}")
+    public ResponseEntity cancelApplication(@PathVariable Long id, @PathVariable Long applicationId,
+                                            @RequestBody Application applicationDetails ){
+        Optional<Student> studentById = studentRepo.findById(id);
+        Optional<Application> applicationById = applicationRepo.findById(applicationId);
+        if(studentById.isPresent() && applicationById.isPresent()){
+            Application application = applicationById.get();
+            application.setStatus(applicationDetails.getStatus());
+            applicationRepo.save(application);
+            return new ResponseEntity<>(HttpStatus.OK);
+        }
+        else{
+            return new ResponseEntity<>(HttpStatus.NOT_FOUND);
+        }
+
     }
 }
