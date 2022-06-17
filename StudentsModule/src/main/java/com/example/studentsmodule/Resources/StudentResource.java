@@ -1,6 +1,8 @@
 package com.example.studentsmodule.Resources;
 
+import com.example.studentsmodule.Entities.Application;
 import com.example.studentsmodule.Entities.Student;
+import com.example.studentsmodule.Repository.ApplicationRepo;
 import com.example.studentsmodule.Repository.StudentRepo;
 import com.example.studentsmodule.Services.StudentService;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -22,9 +24,13 @@ public class StudentResource {
     final
     StudentRepo studentRepo;
 
-    public StudentResource(StudentService studentService, StudentRepo studentRepo) {
+    final
+    ApplicationRepo applicationRepo;
+
+    public StudentResource(StudentService studentService, StudentRepo studentRepo, ApplicationRepo applicationRepo) {
         this.studentService = studentService;
         this.studentRepo = studentRepo;
+        this.applicationRepo = applicationRepo;
     }
 
     @GetMapping("/students")
@@ -75,6 +81,12 @@ public class StudentResource {
         else {
             return new ResponseEntity<>(HttpStatus.NOT_FOUND);
         }
+    }
+
+    @PostMapping("/students/{id}/applications")
+    public ResponseEntity createApplication(@RequestBody Application application){
+        applicationRepo.saveAndFlush(application);
+        return new ResponseEntity<>(HttpStatus.OK);
     }
 
     @GetMapping("/students/{id}/applications/{applicationId}")

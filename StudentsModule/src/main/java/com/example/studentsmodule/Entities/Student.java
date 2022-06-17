@@ -4,6 +4,7 @@ import lombok.*;
 import org.springframework.lang.Nullable;
 
 import javax.persistence.*;
+import java.util.ArrayList;
 import java.util.List;
 
 @Entity
@@ -34,5 +35,6 @@ public class Student {
         this.firstName = firstName;
         this.lastName = lastName;
         this.pesel = pesel;
+        this.applications = new ArrayList<>();
     }
 }

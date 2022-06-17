@@ -8,6 +8,7 @@ import javax.persistence.Entity;
 import javax.persistence.GeneratedValue;
 import javax.persistence.GenerationType;
 import javax.persistence.Id;
+import java.time.LocalDate;
 
 @Entity
 @Getter
@@ -20,12 +21,12 @@ public class Application {
     Long studentId;
     String type;
     String description;
-    String status;
+    String status = "sent";
+    LocalDate date = LocalDate.now();
 
     public Application(Long studentId, String type, String description){
         this.studentId = studentId;
         this.type = type;
         this.description = description;
-        this.status = "Sent";
     }
 }
