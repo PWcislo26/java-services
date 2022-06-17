@@ -34,12 +34,4 @@ public class RegisterResource {
         return new ResponseEntity(HttpStatus.OK);
     }
 
-    @PostMapping("/applications/create")
-    public ResponseEntity createApplication(@RequestBody CreateApplicationRequest createApplicationRequest){
-        Application application = new Application(createApplicationRequest.getStudentId(), createApplicationRequest.getType()
-                , createApplicationRequest.getDescription());
-        String url = String.format("http://localhost:8081/students/%x/applications", createApplicationRequest.getStudentId());
-        restTemplate.postForEntity("http://localhost:8081/students/2/applications", application, ResponseEntity.class);
-        return new ResponseEntity(url, HttpStatus.OK);
-    }
 }
