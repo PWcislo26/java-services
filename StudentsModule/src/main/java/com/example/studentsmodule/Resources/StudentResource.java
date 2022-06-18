@@ -65,10 +65,18 @@ public class StudentResource {
         return new ResponseEntity<>(HttpStatus.CREATED);
     }
 
-    @DeleteMapping("/student/{id}")
+    @DeleteMapping("/students/{id}")
     public ResponseEntity deleteStudent(@PathVariable Long id){
-        studentRepo.deleteById(id);
-        return new ResponseEntity<>(HttpStatus.OK);
+        Optional<Student> studentById = studentRepo.findById(id);
+        if(studentById.isPresent()){
+            studentRepo.deleteById(id);
+            return new ResponseEntity<>(HttpStatus.OK);
+        }
+        else{
+            return new ResponseEntity<>(HttpStatus.NOT_FOUND);
+        }
+
+
     }
 
     @GetMapping("/students/{id}/applications")
