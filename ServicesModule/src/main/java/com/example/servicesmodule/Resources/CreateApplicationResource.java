@@ -5,6 +5,7 @@ import com.example.servicesmodule.Requests.CreateApplicationRequest;
 import lombok.RequiredArgsConstructor;
 import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
+import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.RequestBody;
 import org.springframework.web.bind.annotation.RestController;
@@ -16,12 +17,12 @@ public class CreateApplicationResource {
 
     private final RestTemplate restTemplate;
 
-    @PostMapping("/my-applications/create")
-    public ResponseEntity createApplication(@RequestBody CreateApplicationRequest createApplicationRequest){
-        Application application = new Application(createApplicationRequest.getStudentId(), createApplicationRequest.getType()
+    @PostMapping("/{id}/my-applications/create")
+    public ResponseEntity createApplication(@PathVariable Long id, @RequestBody CreateApplicationRequest createApplicationRequest){
+        Application application = new Application(id, createApplicationRequest.getType()
                 , createApplicationRequest.getDescription());
         restTemplate.postForEntity("http://localhost:8081/students/{id}/applications", application,
-                ResponseEntity.class, createApplicationRequest.getStudentId());
+                ResponseEntity.class, id);
         return new ResponseEntity(HttpStatus.OK);
     }
 }
