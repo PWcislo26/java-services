@@ -1,6 +1,5 @@
 package com.example.servicesmodule.Resources;
 
-import com.example.servicesmodule.Entities.Student;
 import lombok.AllArgsConstructor;
 import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;

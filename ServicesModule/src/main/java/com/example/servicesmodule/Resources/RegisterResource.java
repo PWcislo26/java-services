@@ -1,8 +1,6 @@
 package com.example.servicesmodule.Resources;
 
-import com.example.servicesmodule.Entities.Application;
 import com.example.servicesmodule.Entities.Student;
-import com.example.servicesmodule.Requests.CreateApplicationRequest;
 import com.example.servicesmodule.Requests.RegisterRequest;
 import lombok.RequiredArgsConstructor;
 import org.springframework.http.HttpStatus;

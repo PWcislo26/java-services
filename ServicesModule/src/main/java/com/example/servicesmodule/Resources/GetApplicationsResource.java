@@ -1,13 +1,9 @@
 package com.example.servicesmodule.Resources;
 
-import com.example.servicesmodule.Entities.Application;
 import lombok.RequiredArgsConstructor;
-import org.springframework.http.HttpMethod;
 import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.*;
 import org.springframework.web.client.RestTemplate;
-
-import javax.swing.text.html.parser.Entity;
 import java.util.List;
 
 @RestController
