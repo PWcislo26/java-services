@@ -19,11 +19,11 @@ public class Student {
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     @Column(name = "studentId")
     private Long id;
-    @Column(name = "firstName", nullable = false)
+    @Column(name = "firstName")
     private String firstName;
-    @Column(name= "lastName", nullable = false)
+    @Column(name= "lastName")
     private String lastName;
-    @Column(name = "pesel", length = 11)
+    @Column(name = "pesel")
     private String pesel;
 
     @Nullable
