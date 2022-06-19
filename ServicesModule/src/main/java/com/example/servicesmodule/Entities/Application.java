@@ -25,9 +25,7 @@ public class Application {
         this.date = LocalDate.now();
     }
 
-    public Application(Long id, Long studentId, String status){
-        this.id = id;
-        this.studentId = studentId;
+    public Application(String status){
         this.status = status;
     }
 }

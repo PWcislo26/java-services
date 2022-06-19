@@ -5,11 +5,9 @@ import lombok.Getter;
 @Getter
 public class CancelApplicationRequest {
     private Long id;
-    private Long studentId;
     private String status = "Cancelled";
 
-    public CancelApplicationRequest(Long id, Long studentId){
+    public CancelApplicationRequest(Long id){
         this.id = id;
-        this.studentId =  studentId;
     }
 }
