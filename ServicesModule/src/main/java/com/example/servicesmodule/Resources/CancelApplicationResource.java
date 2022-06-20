@@ -24,6 +24,6 @@ public class CancelApplicationResource {
         String url = String.format("http://localhost:8081/students/%x/applications/%x",
                 id, applicationId);
         restTemplate.put(url, application);
-        return new ResponseEntity(HttpStatus.OK);
+        return new ResponseEntity("Application cancelled",HttpStatus.OK);
     }
 }

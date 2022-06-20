@@ -17,7 +17,7 @@ public class DeleteStudentResource {
     @DeleteMapping("/{id}/delete-account")
     public ResponseEntity deleteStudent(@PathVariable Long id){
         restTemplate.delete("http://localhost:8081/students/{id}", id);
-        return new ResponseEntity(HttpStatus.OK);
+        return new ResponseEntity("Student deleted",HttpStatus.OK);
     }
 
 }

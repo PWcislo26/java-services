@@ -29,7 +29,7 @@ public class RegisterResource {
         }
         Student student = new Student(registerRequest.getFirstName(), registerRequest.getLastName(), registerRequest.getPesel());
         restTemplate.postForEntity("http://localhost:8081/students", student, ResponseEntity.class);
-        return new ResponseEntity(HttpStatus.OK);
+        return new ResponseEntity<>("Sign-up successful ",HttpStatus.OK);
     }
 
 }

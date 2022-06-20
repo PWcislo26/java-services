@@ -23,6 +23,6 @@ public class CreateApplicationResource {
                 , createApplicationRequest.getDescription());
         restTemplate.postForEntity("http://localhost:8081/students/{id}/applications", application,
                 ResponseEntity.class, id);
-        return new ResponseEntity(HttpStatus.OK);
+        return new ResponseEntity("Application created", HttpStatus.OK);
     }
 }
